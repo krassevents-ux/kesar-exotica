@@ -165,11 +165,11 @@ h2{font-size:clamp(30px,4.4vw,50px);color:var(--maroon)}
 .garden .t h3 .script{display:block;color:var(--gold);font-size:1.15em}
 .garden .t p{font-family:"Cormorant Garamond";font-style:italic;font-size:21px;color:var(--blue)}
 .pw{width:min(210px,62%);margin-bottom:12px}
-.pk{position:relative;transform-origin:62% 92%}
-.pk img{width:100%}
-.pk::after{content:"";position:absolute;inset:0;-webkit-mask:url(img/peacock.webp) center/100% 100% no-repeat;mask:url(img/peacock.webp) center/100% 100% no-repeat;background:linear-gradient(100deg,transparent 30%,rgba(255,236,170,.85) 50%,transparent 70%) 0 0/300% 100% no-repeat;mix-blend-mode:screen;animation:shine 6s ease-in-out 3s infinite}
-.js .pw .pk{opacity:0}
-.js .pw.in .pk{animation:walkin 2.6s cubic-bezier(.3,.6,.3,1) forwards,peck 7s ease-in-out 3s infinite}
+.pck{position:relative;transform-origin:62% 92%}
+.pck img{width:100%}
+.pck::after{content:"";position:absolute;inset:0;-webkit-mask:url(img/peacock.webp) center/100% 100% no-repeat;mask:url(img/peacock.webp) center/100% 100% no-repeat;background:linear-gradient(100deg,transparent 30%,rgba(255,236,170,.85) 50%,transparent 70%) 0 0/300% 100% no-repeat;mix-blend-mode:screen;animation:shine 6s ease-in-out 3s infinite}
+.js .pw .pck{opacity:0}
+.js .pw.in .pck{animation:walkin 2.6s cubic-bezier(.3,.6,.3,1) forwards,peck 7s ease-in-out 3s infinite}
 @keyframes walkin{0%{opacity:0;translate:-110px 0}10%{opacity:1}18%{translate:-88px -6px}30%{translate:-66px 0}42%{translate:-46px -6px}54%{translate:-28px 0}66%{translate:-14px -5px}78%{translate:-4px 0}100%{opacity:1;translate:0 0}}
 @keyframes peck{0%,62%,100%{rotate:0deg}70%{rotate:5deg}76%{rotate:1deg}82%{rotate:4deg}90%{rotate:0deg}}
 @keyframes shine{0%{background-position:120% 0}35%,100%{background-position:-20% 0}}
@@ -421,7 +421,7 @@ footer{background:var(--navy2);color:#c9c0ad;text-align:center;font-size:14px;pa
 
     <div class="look garden">
       <div class="t">
-        <div class="pw rv"><div class="pk"><img src="img/peacock.webp" alt=""></div></div>
+        <div class="pw rv"><div class="pck"><img src="img/peacock.webp" alt=""></div></div>
         <h3 class="rv">A Wedding <span class="script">in the Garden</span></h3>
         <p class="rv" style="--d:.15s">An open-air ceremony framed by florals, hills and timeless elegance.</p>
       </div>
