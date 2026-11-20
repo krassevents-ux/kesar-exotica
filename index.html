@@ -164,8 +164,39 @@ h2{font-size:clamp(30px,4.4vw,50px);color:var(--maroon)}
 .garden .t h3{font-size:clamp(30px,4vw,48px);color:var(--maroon);line-height:1.1}
 .garden .t h3 .script{display:block;color:var(--gold);font-size:1.15em}
 .garden .t p{font-family:"Cormorant Garamond";font-style:italic;font-size:21px;color:var(--blue)}
-.garden .peacock{width:min(200px,60%);margin-bottom:10px;animation:bob 3.5s ease-in-out infinite alternate}
-@media(max-width:760px){.garden{grid-template-columns:1fr;text-align:center}.garden .peacock{margin-inline:auto}}
+.pw{width:min(210px,62%);margin-bottom:12px}
+.pk{position:relative;transform-origin:62% 92%}
+.pk img{width:100%}
+.pk::after{content:"";position:absolute;inset:0;-webkit-mask:url(img/peacock.webp) center/100% 100% no-repeat;mask:url(img/peacock.webp) center/100% 100% no-repeat;background:linear-gradient(100deg,transparent 30%,rgba(255,236,170,.85) 50%,transparent 70%) 0 0/300% 100% no-repeat;mix-blend-mode:screen;animation:shine 6s ease-in-out 3s infinite}
+.js .pw .pk{opacity:0}
+.js .pw.in .pk{animation:walkin 2.6s cubic-bezier(.3,.6,.3,1) forwards,peck 7s ease-in-out 3s infinite}
+@keyframes walkin{0%{opacity:0;translate:-110px 0}10%{opacity:1}18%{translate:-88px -6px}30%{translate:-66px 0}42%{translate:-46px -6px}54%{translate:-28px 0}66%{translate:-14px -5px}78%{translate:-4px 0}100%{opacity:1;translate:0 0}}
+@keyframes peck{0%,62%,100%{rotate:0deg}70%{rotate:5deg}76%{rotate:1deg}82%{rotate:4deg}90%{rotate:0deg}}
+@keyframes shine{0%{background-position:120% 0}35%,100%{background-position:-20% 0}}
+@media(max-width:760px){.garden{grid-template-columns:1fr;text-align:center}.pw{margin-inline:auto}}
+/* before/after */
+.hint{text-align:center;font-family:Cinzel;font-size:12.5px;letter-spacing:.18em;color:var(--gold);margin:0 0 12px;text-transform:uppercase}
+.ba{position:relative;--p:0%;cursor:zoom-in;filter:drop-shadow(0 12px 22px rgba(58,42,31,.18))}
+.ba>img,.ba .after img{display:block;width:100%}
+.ba .after{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--p)) 0 0)}
+.ba .edge{position:absolute;top:4%;bottom:4%;left:var(--p);width:2px;translate:-1px 0;background:linear-gradient(transparent,var(--gold2) 15%,var(--gold2) 85%,transparent);opacity:var(--eo,0);pointer-events:none}
+.ba .edge::after{content:"";position:absolute;top:50%;left:50%;width:14px;height:14px;translate:-50% -50%;rotate:45deg;background:var(--paper2);border:2px solid var(--gold)}
+.ba .tag{position:absolute;top:9%;padding:5px 14px;border-radius:999px;font-family:Cinzel;font-size:clamp(10px,1.1vw,13px);letter-spacing:.12em;background:rgba(20,32,74,.78);color:#f3e7cc;transition:opacity .4s;white-space:nowrap}
+.ba .bl{left:6%;opacity:var(--bo,1)}.ba .al{right:6%;opacity:var(--ao,0);background:rgba(138,30,36,.85)}
+.sg{grid-template-columns:minmax(0,1.6fr) minmax(0,.6fr);margin-top:clamp(10px,1.4vw,18px)}
+@media(max-width:700px){.sg{grid-template-columns:1fr 1fr}.sg img:first-child{grid-column:1/-1}.sg img:last-child{grid-column:1/-1;max-width:220px;margin:auto}}
+/* lightbox */
+.zoom,.gal img,.lg img,.sg img,.pic>img:first-child,.archf{cursor:zoom-in}
+.lb{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:rgba(12,17,40,.94);opacity:0;visibility:hidden;transition:opacity .45s,visibility .45s}
+.lb.open{opacity:1;visibility:visible}
+.lb figure{margin:0;display:grid;justify-items:center;gap:14px;padding:16px}
+.lb img{width:min(94vw,1100px);max-height:80vh;object-fit:contain;transform:scale(.94);transition:transform .55s var(--e),opacity .3s}
+.lb.open img{transform:none}
+.lb figcaption{font-family:"Cormorant Garamond";font-style:italic;font-size:19px;color:#e8dcc2;text-align:center}
+.lb button{position:absolute;width:48px;height:48px;border-radius:50%;border:1px solid rgba(217,181,106,.6);background:rgba(20,32,74,.6);color:#f3e7cc;font-size:24px;line-height:1;cursor:pointer}
+.lb button:hover,.lb button:focus-visible{background:var(--maroon);outline:none}
+.lb .x{top:16px;right:16px}.lb .pv{left:14px;top:50%;translate:0 -50%}.lb .nx{right:14px;top:50%;translate:0 -50%}
+@media(max-width:600px){.lb .pv,.lb .nx{top:auto;bottom:18px;translate:none}.lb .pv{left:calc(50% - 60px)}.lb .nx{right:calc(50% - 60px)}}
 .note{font-size:14px;font-style:italic;color:var(--soft);text-align:center;margin-top:24px}
 /* timeline */
 .tline{position:relative;max-width:860px;margin:56px auto 0;padding:10px 0}
@@ -239,7 +270,7 @@ footer{background:var(--navy2);color:#c9c0ad;text-align:center;font-size:14px;pa
       <h1><span class="ld" style="--d:.2s">Your</span><span class="ld" style="--d:.45s">Wedding</span></h1>
       
       <p class="tag ld" style="--d:.7s">YOUR PEOPLE. YOUR OWN<br>LITTLE GETAWAY.</p>
-      <p class="place ld" style="--d:.9s">An intimate wedding destination in Pen, Maharashtra. Ek private estate, sirf aapke apno ke liye.</p>
+      <p class="place ld" style="--d:.9s">An intimate wedding destination in Pen, Maharashtra.</p>
       <div class="pathbox ld" style="--d:1s"><img class="path" src="img/path.webp" alt=""><img class="hills" src="img/hills.webp" alt=""><img class="pin" src="img/elephant.webp" alt=""></div>
     </div>
     <div class="gz ld" style="--d:.5s"><img class="main" src="img/gazebo.webp" alt="Illustration of a couple under a floral glass mandap" data-px=".06"></div>
@@ -295,8 +326,6 @@ footer{background:var(--navy2);color:#c9c0ad;text-align:center;font-size:14px;pa
 
 <!-- THREE WAYS -->
 <section class="band" id="packages">
-  <img class="side l sway" src="img/sunflower.webp" alt="">
-  <img class="side r" src="img/lantern.webp" alt="">
   <div class="wrap center">
     <h2 class="rv">Three ways to celebrate</h2>
     <p class="sub rv" style="--d:.1s">CHOOSE YOUR EXPERIENCE. WE'LL TAKE IT FROM HERE.</p>
@@ -330,7 +359,7 @@ footer{background:var(--navy2);color:#c9c0ad;text-align:center;font-size:14px;pa
       </ul>
       <div class="price rv"><span>PACKAGE PRICE</span><b data-count="300000">Rs. 3,00,000/-</b><i>Includes the whole property buyout for 2 days</i></div>
     </div>
-    <div class="pic rv arch"><img src="img/arch-villa.webp" alt="The villa and lawn at sunset, framed in an arch" data-px=".05"><img src="img/bougain2.webp" alt="" style="position:absolute;width:45%;right:-12%;top:-4%;animation:sway 6s ease-in-out infinite alternate"></div>
+    <div class="pic rv arch"><img src="img/arch-villa.webp" alt="The villa and lawn at sunset, framed in an arch" data-px=".05"></div>
   </div>
 </section>
 
@@ -339,7 +368,7 @@ footer{background:var(--navy2);color:#c9c0ad;text-align:center;font-size:14px;pa
   <img class="tile tl" src="img/tile.webp" alt="" style="opacity:.9">
   <img class="tile br" src="img/tile.webp" alt="" style="opacity:.9">
   <div class="wrap split">
-    <div class="pic rv arch"><div class="archf"><img src="img/g-wide.webp" alt="Glass mandap and ceremony aisle on the lawn" style="object-position:64% 80%"></div><img class="flora" src="img/bougain2.webp" alt=""></div>
+    <div class="pic rv arch"><div class="archf"><img src="img/g-wide.webp" alt="Glass mandap and ceremony aisle on the lawn" style="object-position:64% 80%"></div></div>
     <div>
       <p class="badge rv">Package two</p>
       <h2 class="rv">The Decor Experience</h2>
@@ -373,43 +402,41 @@ footer{background:var(--navy2);color:#c9c0ad;text-align:center;font-size:14px;pa
     <div class="look">
       <div class="look-h rv"><img src="img/haldi.webp" alt=""><h3>Carnival by the Bay</h3></div>
       <p class="cap rv">Haldi and mehendi by the pool: pastel arches, fresh florals and plenty of colour.</p>
-      <div class="lg">
-        <img class="rv l" src="img/c-pool.webp" alt="Poolside before decor">
-        <img class="rv r" src="img/c-arches.webp" alt="Pastel floral arches by the pool" style="--d:.15s">
-        <img class="wide rv z" src="img/c-poolwide.webp" alt="Poolside arches and seating along the pool" style="--d:.1s">
-      </div>
+      <p class="hint rv">Scroll to see the poolside transform</p>
+      <div class="ba rv" data-full="img/c-arches.webp" data-alt="Pastel floral arches by the pool"><img src="img/c-pool.webp" alt="The pool, as is"><div class="after"><img src="img/c-arches.webp" alt="Pastel floral arches by the pool"></div><i class="edge"></i><span class="tag bl">The pool, as is</span><span class="tag al">With haldi decor</span></div>
+      <img class="wide rv z zoom" src="img/c-poolwide.webp" alt="Poolside arches and seating along the pool" style="margin-top:clamp(10px,1.4vw,18px)">
     </div>
 
     <div class="night">
       <div class="stars"></div>
       <div class="look-h rv" style="position:relative"><h3>A Sangeet under the Stars</h3></div>
       <p class="cap rv" style="position:relative">The main lawn, from golden hour to full sangeet mode: fairy-light canopies, a glowing stage and a dance floor for the whole khandaan.</p>
+      <p class="hint rv" style="position:relative;color:var(--gold2)">Scroll to watch the lawn go from day to night</p>
+      <div class="ba rv" data-full="img/s-aisle.webp" data-alt="Fairy-light canopy over the lawn at night"><img src="img/s-lawn.webp" alt="The lawn by day"><div class="after"><img src="img/s-aisle.webp" alt="Fairy-light canopy over the lawn at night"></div><i class="edge"></i><span class="tag bl">The lawn by day</span><span class="tag al">Sangeet night</span></div>
       <div class="sg">
-        <div class="stack"><img class="rv" src="img/s-lawn.webp" alt="The lawn by day"><p class="lbl rv">BY DAY</p><img class="rv" src="img/s-aisle.webp" alt="Lit pathway at night" style="--d:.2s"></div>
-        <div class="big"><img class="rv z" src="img/s-lights.webp" alt="Sangeet stage and seating under string lights" style="--d:.3s"><p class="lbl rv">BY NIGHT</p></div>
-        <img class="rv r" src="img/s-arch.webp" alt="Lit arch installation" style="--d:.45s">
+        <img class="rv z" src="img/s-lights.webp" alt="Sangeet stage and seating under string lights" style="--d:.1s">
+        <img class="rv r" src="img/s-arch.webp" alt="Lit arch installation" style="--d:.25s">
       </div>
     </div>
 
     <div class="look garden">
       <div class="t">
-        <img class="peacock rv" src="img/peacock.webp" alt="">
+        <div class="pw rv"><div class="pk"><img src="img/peacock.webp" alt=""></div></div>
         <h3 class="rv">A Wedding <span class="script">in the Garden</span></h3>
         <p class="rv" style="--d:.15s">An open-air ceremony framed by florals, hills and timeless elegance.</p>
       </div>
-      <div class="lg">
-        <img class="wide rv z" src="img/g-wide.webp" alt="Garden ceremony with glass mandap and white chairs">
-        <img class="rv l" src="img/g-path.webp" alt="The lawn and pathway by day" style="--d:.15s">
-        <img class="rv r" src="img/g-aisle.webp" alt="Ceremony aisle leading to the mandap" style="--d:.3s">
+      <div>
+        <p class="hint rv">Scroll to see the lawn become a mandap</p>
+        <div class="ba rv" data-full="img/g-aisle.webp" data-alt="Ceremony aisle leading to the glass mandap"><img src="img/g-path.webp" alt="The lawn, as is"><div class="after"><img src="img/g-aisle.webp" alt="Ceremony aisle leading to the glass mandap"></div><i class="edge"></i><span class="tag bl">The lawn, as is</span><span class="tag al">Wedding ceremony</span></div>
+        <img class="rv z" src="img/g-wide.webp" alt="Garden ceremony with glass mandap and white chairs" style="margin-top:clamp(10px,1.4vw,18px)">
       </div>
     </div>
-    <p class="note rv">Decor visuals are sample concepts; final designs are created around your requirements.</p>
+    <p class="note rv">Tap any photo to view it full screen. Decor visuals are sample concepts; final designs are created around your requirements.</p>
   </div>
 </section>
 
 <!-- COMPLETE -->
 <section class="band pk" id="complete">
-  <img class="side r" src="img/jasmine.webp" alt="" style="top:0;bottom:auto;transform-origin:50% 0;animation:swing 6s ease-in-out infinite alternate">
   <div class="wrap split rev">
     <div>
       <p class="badge rv">Package three · our most comprehensive</p>
@@ -510,6 +537,7 @@ footer{background:var(--navy2);color:#c9c0ad;text-align:center;font-size:14px;pa
   </div>
   <img class="skyline rv" src="img/skyline.webp" alt="">
 </section>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer"><figure><img id="lbimg" alt=""><figcaption id="lbcap"></figcaption></figure><button class="x" id="lbx" aria-label="Close">&times;</button><button class="pv" id="lbp" aria-label="Previous photo">&#8249;</button><button class="nx" id="lbn" aria-label="Next photo">&#8250;</button></div>
 <footer>Kesar Exotica, Pen, Maharashtra · Wedding packages by Krass Events &amp; Co. · All packages are starting prices</footer>
 
 <script>
@@ -538,14 +566,27 @@ document.querySelectorAll('.rv,.crow').forEach(el=>io.observe(el));
 
 const top=document.getElementById('top'),prog=document.getElementById('prog'),fill=document.getElementById('tlfill'),tl=document.getElementById('tl');
 const px=[...document.querySelectorAll('[data-px]')];
+const bas=[...document.querySelectorAll('.ba')];
 let ticking=false;
 const tick=()=>{ticking=false;const vh=innerHeight,y=scrollY,h=document.documentElement.scrollHeight-vh;
   prog.style.transform=`scaleX(${h>0?y/h:0})`;top.classList.toggle('show',y>vh*.6);
   const r=tl.getBoundingClientRect();fill.style.transform=`scaleY(${Math.max(0,Math.min(1,(vh*.62-r.top)/r.height))})`;
+  for(const b of bas){const q=b.getBoundingClientRect();const t=Math.max(0,Math.min(1,(vh*.92-q.top)/(vh*.7)));b.style.setProperty('--p',(t*100).toFixed(1)+'%');b.style.setProperty('--eo',t>0.02&&t<0.98?1:0);b.style.setProperty('--bo',t<.55?1:0);b.style.setProperty('--ao',t>.45?1:0)}
   if(!reduce)for(const el of px){const b=el.parentElement.getBoundingClientRect();if(b.bottom<-200||b.top>vh+200)continue;el.style.translate=`0 ${(-(b.top+b.height/2-vh/2)*el.dataset.px).toFixed(1)}px`}};
 addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(tick)}},{passive:true});
 addEventListener('resize',tick);tick();
 requestAnimationFrame(()=>setTimeout(()=>document.body.classList.add('loaded'),80));
+const zs=[...document.querySelectorAll('#venue .gal img,#looks .ba,#looks .zoom,#looks .lg img,#looks .garden img.z,#looks .sg img,.pic>img:first-child,.archf')];
+const lb=document.getElementById('lb'),li=document.getElementById('lbimg'),lc=document.getElementById('lbcap');let cur=0,last=null;
+const src=el=>el.dataset.full?[el.dataset.full,el.dataset.alt]:(el.tagName==='IMG'?[el.src,el.alt]:[el.querySelector('img').src,el.querySelector('img').alt]);
+const show=i=>{cur=(i+zs.length)%zs.length;const [u,a]=src(zs[cur]);li.src=u;li.alt=a;lc.textContent=a};
+const openLb=i=>{last=document.activeElement;show(i);lb.classList.add('open');document.body.style.overflow='hidden';document.getElementById('lbx').focus()};
+const closeLb=()=>{lb.classList.remove('open');document.body.style.overflow='';if(last)last.focus()};
+zs.forEach((el,i)=>{el.tabIndex=0;el.setAttribute('role','button');el.addEventListener('click',()=>openLb(i));el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openLb(i)}})});
+document.getElementById('lbx').onclick=closeLb;document.getElementById('lbp').onclick=e=>{e.stopPropagation();show(cur-1)};document.getElementById('lbn').onclick=e=>{e.stopPropagation();show(cur+1)};
+lb.addEventListener('click',e=>{if(e.target===lb||e.target.tagName==='FIGURE')closeLb()});
+addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1)});
+let sx=0;lb.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});lb.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>50)show(cur+(d<0?1:-1))});
 }
 </script>
 </body>
