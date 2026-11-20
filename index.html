@@ -175,12 +175,17 @@ h2{font-size:clamp(30px,4.4vw,50px);color:var(--maroon)}
 @keyframes shine{0%{background-position:120% 0}35%,100%{background-position:-20% 0}}
 @media(max-width:760px){.garden{grid-template-columns:1fr;text-align:center}.pw{margin-inline:auto}}
 /* before/after */
+.night .hint{color:var(--gold2)!important}
 .hint{text-align:center;font-family:Cinzel;font-size:12.5px;letter-spacing:.18em;color:var(--gold);margin:0 0 12px;text-transform:uppercase}
-.ba{position:relative;--p:0%;cursor:zoom-in;filter:drop-shadow(0 12px 22px rgba(58,42,31,.18))}
-.ba>img,.ba .after img{display:block;width:100%}
+.ba{position:relative;--p:0%;cursor:ew-resize;touch-action:pan-y;user-select:none;-webkit-user-select:none;filter:drop-shadow(0 12px 22px rgba(58,42,31,.18))}
+.ba>img,.ba .after img{display:block;width:100%;-webkit-user-drag:none;pointer-events:none}
 .ba .after{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--p)) 0 0)}
-.ba .edge{position:absolute;top:4%;bottom:4%;left:var(--p);width:2px;translate:-1px 0;background:linear-gradient(transparent,var(--gold2) 15%,var(--gold2) 85%,transparent);opacity:var(--eo,0);pointer-events:none}
-.ba .edge::after{content:"";position:absolute;top:50%;left:50%;width:14px;height:14px;translate:-50% -50%;rotate:45deg;background:var(--paper2);border:2px solid var(--gold)}
+.ba .edge{position:absolute;top:4%;bottom:4%;left:var(--p);width:2px;translate:-1px 0;background:linear-gradient(transparent,var(--gold2) 15%,var(--gold2) 85%,transparent);pointer-events:none}
+.ba .knob{position:absolute;top:50%;left:50%;width:44px;height:44px;translate:-50% -50%;border-radius:50%;display:grid;place-items:center;background:var(--paper2);border:2px solid var(--gold);color:var(--maroon);font:500 20px/1 Cinzel,serif;letter-spacing:2px;box-shadow:0 4px 14px rgba(0,0,0,.25);transition:scale .2s}
+.ba.drag .knob{scale:1.12}
+.ba .bx{position:absolute;right:5%;bottom:9%;width:40px;height:40px;border-radius:50%;border:1px solid rgba(217,181,106,.7);background:rgba(20,32,74,.72);color:#f3e7cc;font-size:18px;cursor:zoom-in}
+.ba .bx:hover,.ba .bx:focus-visible,.ba:focus-visible .knob{outline:2px solid var(--gold2);outline-offset:2px}
+.ba:focus-visible{outline:none}
 .ba .tag{position:absolute;top:9%;padding:5px 14px;border-radius:999px;font-family:Cinzel;font-size:clamp(10px,1.1vw,13px);letter-spacing:.12em;background:rgba(20,32,74,.78);color:#f3e7cc;transition:opacity .4s;white-space:nowrap}
 .ba .bl{left:6%;opacity:var(--bo,1)}.ba .al{right:6%;opacity:var(--ao,0);background:rgba(138,30,36,.85)}
 .sg{grid-template-columns:minmax(0,1.6fr) minmax(0,.6fr);margin-top:clamp(10px,1.4vw,18px)}
@@ -402,8 +407,8 @@ footer{background:var(--navy2);color:#c9c0ad;text-align:center;font-size:14px;pa
     <div class="look">
       <div class="look-h rv"><img src="img/haldi.webp" alt=""><h3>Carnival by the Bay</h3></div>
       <p class="cap rv">Haldi and mehendi by the pool: pastel arches, fresh florals and plenty of colour.</p>
-      <p class="hint rv">Scroll to see the poolside transform</p>
-      <div class="ba rv" data-full="img/c-arches.webp" data-alt="Pastel floral arches by the pool"><img src="img/c-pool.webp" alt="The pool, as is"><div class="after"><img src="img/c-arches.webp" alt="Pastel floral arches by the pool"></div><i class="edge"></i><span class="tag bl">The pool, as is</span><span class="tag al">With haldi decor</span></div>
+      <p class="hint rv">Drag the line to see the poolside transform</p>
+      <div class="ba rv" data-full="img/c-arches.webp" data-alt="Pastel floral arches by the pool"><img src="img/c-pool.webp" alt="The pool, as is"><div class="after"><img src="img/c-arches.webp" alt="Pastel floral arches by the pool"></div><i class="edge"><b class="knob" aria-hidden="true">&#8249;&#8250;</b></i><button class="bx" type="button" aria-label="View the decorated photo full screen">&#10530;</button><span class="tag bl">The pool, as is</span><span class="tag al">With haldi decor</span></div>
       <img class="wide rv z zoom" src="img/c-poolwide.webp" alt="Poolside arches and seating along the pool" style="margin-top:clamp(10px,1.4vw,18px)">
     </div>
 
@@ -411,8 +416,8 @@ footer{background:var(--navy2);color:#c9c0ad;text-align:center;font-size:14px;pa
       <div class="stars"></div>
       <div class="look-h rv" style="position:relative"><h3>A Sangeet under the Stars</h3></div>
       <p class="cap rv" style="position:relative">The main lawn, from golden hour to full sangeet mode: fairy-light canopies, a glowing stage and a dance floor for the whole khandaan.</p>
-      <p class="hint rv" style="position:relative;color:var(--gold2)">Scroll to watch the lawn go from day to night</p>
-      <div class="ba rv" data-full="img/s-aisle.webp" data-alt="Fairy-light canopy over the lawn at night"><img src="img/s-lawn.webp" alt="The lawn by day"><div class="after"><img src="img/s-aisle.webp" alt="Fairy-light canopy over the lawn at night"></div><i class="edge"></i><span class="tag bl">The lawn by day</span><span class="tag al">Sangeet night</span></div>
+      <p class="hint rv" style="position:relative;color:var(--gold2)">Drag the line to take the lawn from day to night</p>
+      <div class="ba rv" data-full="img/s-aisle.webp" data-alt="Fairy-light canopy over the lawn at night"><img src="img/s-lawn.webp" alt="The lawn by day"><div class="after"><img src="img/s-aisle.webp" alt="Fairy-light canopy over the lawn at night"></div><i class="edge"><b class="knob" aria-hidden="true">&#8249;&#8250;</b></i><button class="bx" type="button" aria-label="View the decorated photo full screen">&#10530;</button><span class="tag bl">The lawn by day</span><span class="tag al">Sangeet night</span></div>
       <div class="sg">
         <img class="rv z" src="img/s-lights.webp" alt="Sangeet stage and seating under string lights" style="--d:.1s">
         <img class="rv r" src="img/s-arch.webp" alt="Lit arch installation" style="--d:.25s">
@@ -426,8 +431,8 @@ footer{background:var(--navy2);color:#c9c0ad;text-align:center;font-size:14px;pa
         <p class="rv" style="--d:.15s">An open-air ceremony framed by florals, hills and timeless elegance.</p>
       </div>
       <div>
-        <p class="hint rv">Scroll to see the lawn become a mandap</p>
-        <div class="ba rv" data-full="img/g-aisle.webp" data-alt="Ceremony aisle leading to the glass mandap"><img src="img/g-path.webp" alt="The lawn, as is"><div class="after"><img src="img/g-aisle.webp" alt="Ceremony aisle leading to the glass mandap"></div><i class="edge"></i><span class="tag bl">The lawn, as is</span><span class="tag al">Wedding ceremony</span></div>
+        <p class="hint rv">Drag the line to see the lawn become a mandap</p>
+        <div class="ba rv" data-full="img/g-aisle.webp" data-alt="Ceremony aisle leading to the glass mandap"><img src="img/g-path.webp" alt="The lawn, as is"><div class="after"><img src="img/g-aisle.webp" alt="Ceremony aisle leading to the glass mandap"></div><i class="edge"><b class="knob" aria-hidden="true">&#8249;&#8250;</b></i><button class="bx" type="button" aria-label="View the decorated photo full screen">&#10530;</button><span class="tag bl">The lawn, as is</span><span class="tag al">Wedding ceremony</span></div>
         <img class="rv z" src="img/g-wide.webp" alt="Garden ceremony with glass mandap and white chairs" style="margin-top:clamp(10px,1.4vw,18px)">
       </div>
     </div>
@@ -571,7 +576,6 @@ let ticking=false;
 const tick=()=>{ticking=false;const vh=innerHeight,y=scrollY,h=document.documentElement.scrollHeight-vh;
   prog.style.transform=`scaleX(${h>0?y/h:0})`;top.classList.toggle('show',y>vh*.6);
   const r=tl.getBoundingClientRect();fill.style.transform=`scaleY(${Math.max(0,Math.min(1,(vh*.62-r.top)/r.height))})`;
-  for(const b of bas){const q=b.getBoundingClientRect();const t=Math.max(0,Math.min(1,(vh*.92-q.top)/(vh*.7)));b.style.setProperty('--p',(t*100).toFixed(1)+'%');b.style.setProperty('--eo',t>0.02&&t<0.98?1:0);b.style.setProperty('--bo',t<.55?1:0);b.style.setProperty('--ao',t>.45?1:0)}
   if(!reduce)for(const el of px){const b=el.parentElement.getBoundingClientRect();if(b.bottom<-200||b.top>vh+200)continue;el.style.translate=`0 ${(-(b.top+b.height/2-vh/2)*el.dataset.px).toFixed(1)}px`}};
 addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(tick)}},{passive:true});
 addEventListener('resize',tick);tick();
@@ -582,7 +586,18 @@ const src=el=>el.dataset.full?[el.dataset.full,el.dataset.alt]:(el.tagName==='IM
 const show=i=>{cur=(i+zs.length)%zs.length;const [u,a]=src(zs[cur]);li.src=u;li.alt=a;lc.textContent=a};
 const openLb=i=>{last=document.activeElement;show(i);lb.classList.add('open');document.body.style.overflow='hidden';document.getElementById('lbx').focus()};
 const closeLb=()=>{lb.classList.remove('open');document.body.style.overflow='';if(last)last.focus()};
-zs.forEach((el,i)=>{el.tabIndex=0;el.setAttribute('role','button');el.addEventListener('click',()=>openLb(i));el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openLb(i)}})});
+zs.forEach((el,i)=>{if(el.classList.contains('ba')){el.querySelector('.bx').addEventListener('click',e=>{e.stopPropagation();openLb(i)});return}el.tabIndex=0;el.setAttribute('role','button');el.addEventListener('click',()=>openLb(i));el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openLb(i)}})});
+const setP=(b,v)=>{v=Math.max(0,Math.min(100,v));b._v=v;b.style.setProperty('--p',v+'%');b.style.setProperty('--bo',v<90?1:0);b.style.setProperty('--ao',v>10?1:0);b.setAttribute('aria-valuenow',Math.round(v))};
+const baIO=new IntersectionObserver(es=>{for(const e of es){if(!e.isIntersecting)continue;const b=e.target;baIO.unobserve(b);if(reduce||b._touched){if(!b._touched)setP(b,50);continue}
+  const t0=performance.now();const step=t=>{if(b._touched)return;const k=(t-t0)/2600;let v;if(k<.55){const q=k/.55;v=100*(1-Math.pow(1-q,3))}else{const q=Math.min(1,(k-.55)/.45);v=100-50*(1-Math.pow(1-q,3))}setP(b,v);if(k<1)requestAnimationFrame(step)};setTimeout(()=>requestAnimationFrame(step),350)}},{threshold:.5});
+bas.forEach(b=>{setP(b,0);b.tabIndex=0;b.setAttribute('role','slider');b.setAttribute('aria-label','Before and after: drag or use arrow keys');b.setAttribute('aria-valuemin','0');b.setAttribute('aria-valuemax','100');baIO.observe(b);
+  const at=x=>{const r=b.getBoundingClientRect();setP(b,(x-r.left)/r.width*100)};
+  b.querySelectorAll('img').forEach(i=>{i.draggable=false});b.addEventListener('dragstart',e=>e.preventDefault());
+  b.addEventListener('pointerdown',e=>{if(e.target.closest('.bx'))return;b._touched=true;b._down=true;b._x=e.clientX;b._y=e.clientY;b._h=e.pointerType==='mouse';if(b._h){b.classList.add('drag');try{b.setPointerCapture(e.pointerId)}catch(_){}at(e.clientX)}});
+  b.addEventListener('pointermove',e=>{if(!b._down)return;if(!b._h){const dx=Math.abs(e.clientX-b._x),dy=Math.abs(e.clientY-b._y);if(dx>8&&dx>dy){b._h=true;b.classList.add('drag');try{b.setPointerCapture(e.pointerId)}catch(_){}}else if(dy>8){b._down=false;return}}if(b._h){e.preventDefault();at(e.clientX)}});
+  const up=()=>{b._down=false;b.classList.remove('drag')};b.addEventListener('pointerup',up);b.addEventListener('pointercancel',up);b.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse')up()});
+  b.addEventListener('click',e=>{if(e.target.closest('.bx'))return;b._touched=true;at(e.clientX)});
+  b.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();b._touched=true;setP(b,(b._v||0)+(e.key==='ArrowRight'?10:-10))}})});
 document.getElementById('lbx').onclick=closeLb;document.getElementById('lbp').onclick=e=>{e.stopPropagation();show(cur-1)};document.getElementById('lbn').onclick=e=>{e.stopPropagation();show(cur+1)};
 lb.addEventListener('click',e=>{if(e.target===lb||e.target.tagName==='FIGURE')closeLb()});
 addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1)});
